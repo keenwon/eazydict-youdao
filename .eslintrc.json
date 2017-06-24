@@ -123,7 +123,7 @@
     ],
     "indent": [
       2,
-      4
+      2
     ],
     "key-spacing": [
       2,
@@ -162,7 +162,7 @@
     "no-whitespace-before-property": 2,
     "object-curly-spacing": [
       2,
-      "never"
+      "always"
     ],
     "quotes": [
       2,
