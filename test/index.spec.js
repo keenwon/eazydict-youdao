@@ -19,7 +19,7 @@ describe('入参测试', function () {
   describe('# test', function () {
 
     it('英文单词', function () {
-      youdao('world').should.be.resolved;
+      return youdao('world').should.be.resolved;
     });
 
   });

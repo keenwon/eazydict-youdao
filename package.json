@@ -4,7 +4,7 @@
   "description": "eazydict 有道词典插件",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,10 @@
   "devDependencies": {
     "chai": "^4.0.2",
     "chai-as-promised": "^7.0.0",
+    "coveralls": "^2.13.1",
     "mocha": "^3.4.2",
     "mocha-eslint": "^3.0.1",
+    "nyc": "^11.0.2",
     "proxyquire": "^1.8.0"
   },
   "dependencies": {

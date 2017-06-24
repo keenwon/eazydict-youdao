@@ -47,8 +47,12 @@ function main(keyword) {
   const url = `http://www.youdao.com/w/eng/${keyword}/#keyfrom=dict2.top`;
 
   return fetch(url, { headers })
-    .then(res => res.text())
-    .then(body => parser(body))
+    .then(res => {
+      return res.text()
+    })
+    .then(body => {
+      return parser(body)
+    })
 }
 
 module.exports = main;
