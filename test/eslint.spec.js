@@ -3,15 +3,16 @@
 const lint = require('mocha-eslint');
 
 let paths = [
-  'index.js'
+  'index.js',
+  'test/**/*.js'
 ];
 
 let options = {
-    formatter: 'compact',
-    alwaysWarn: false,
-    timeout: 5000,
-    slow: 1000,
-    strict: true
+  formatter: 'compact',
+  alwaysWarn: false,
+  timeout: 5000,
+  slow: 1000,
+  strict: true
 };
 
 lint(paths, options);

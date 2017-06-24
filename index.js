@@ -46,13 +46,9 @@ function main(keyword) {
 
   const url = `http://www.youdao.com/w/eng/${keyword}`;
 
-  fetch(url, { headers })
+  return fetch(url, { headers })
     .then(res => res.text())
     .then(body => parser(body))
-    .then(data => {
-      // eslint-disable-next-line
-      console.log(data);
-    });
 }
 
-main('hello');
+module.exports = main;
