@@ -1,7 +1,7 @@
 'use strict';
 
 const proxyquire = require('proxyquire').noPreserveCache();
-const fetch = require('./mock/fetch');
+const fetch = require('./lib/fetch');
 const stubs = {
   'node-fetch': fetch
 };
@@ -19,10 +19,7 @@ describe('入参测试', function () {
   describe('# test', function () {
 
     it('英文单词', function () {
-      youdao('hello')
-        .then(function () {
-          console.log('done');
-        })
+      youdao('world').should.be.resolved;
     });
 
   });
