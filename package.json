@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "eslint": "mocha ./test/eslint.spec.js",
-    "test": "NODE_ENV=testing nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls"
+    "test": "NODE_ENV=testing nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls",
+    "start": "NODE_ENV=online nyc --reporter=html --reporter=text mocha --timeout 5000 && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

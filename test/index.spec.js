@@ -37,8 +37,8 @@ describe('Test', function () {
 
       youdao('world')
         .then(result => {
-          result.should.property('phonetics').with.lengthOf(2)
-          result.should.property('trans').with.lengthOf(1)
+          result.should.property('phonetics').with.lengthOf(2);
+          result.should.property('trans').lengthOf.at.least(1);
           done();
         });
     });
@@ -48,8 +48,8 @@ describe('Test', function () {
 
       youdao('hello world')
         .then(result => {
-          result.should.property('phonetics').with.lengthOf(0)
-          result.should.property('trans').with.lengthOf(1)
+          result.should.property('phonetics').with.lengthOf(0);
+          result.should.property('trans').lengthOf.at.least(1);
           done();
         });
     });
