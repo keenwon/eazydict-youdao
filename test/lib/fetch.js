@@ -8,10 +8,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const successDataPath = path.resolve(__dirname, '../mock/data_success.html');
-const errorDataPath = path.resolve(__dirname, '../mock/data_error.html');
-
-let currentDataPath = successDataPath;
+const defaultDataPath = path.resolve(__dirname, '../mock/en_world.html');
+let currentDataPath = defaultDataPath;
 
 /**
  * mock fetch 方法
@@ -35,19 +33,12 @@ function fetch() {
 /**
  * 重置 mock 数据
  */
-function resetData(type) {
-  switch (type) {
-    case 'success':
-      currentDataPath = successDataPath;
-      break;
-    case 'error':
-      currentDataPath = errorDataPath;
-      break;
-    default:
-      currentDataPath = successDataPath;
-      break;
+fetch.resetData = function (type) {
+  try {
+    currentDataPath = path.resolve(__dirname, `../mock/${type}.html`);
+  } catch (error) {
+    currentDataPath = defaultDataPath;
   }
-}
+};
 
 module.exports = fetch;
-exports.resetData = resetData;

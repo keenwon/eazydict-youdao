@@ -30,6 +30,14 @@ function parser(html) {
 }
 
 function main(keyword) {
+  if (!keyword) {
+    return Promise.reject('请输入要查询的文字');
+  }
+
+  // if (/^[\u4e00-\u9fa5]+$/.test(keyword)) {
+  //   keyword = encodeURIComponent(keyword);
+  // }
+
   // 模拟浏览器的头信息
   /* eslint-disable max-len */
   const headers = new fetch.Headers({
