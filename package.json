@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "eslint": "mocha ./test/eslint.spec.js",
-    "test": "nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls",
+    "online": "NODE_ENV=online mocha"
   },
   "repository": {
     "type": "git",

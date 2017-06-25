@@ -3,6 +3,9 @@
 const fetch = require('node-fetch');
 const { JSDOM } = require('jsdom');
 
+/**
+ * 解析 HTML
+ */
 function parser(html) {
   let dom = new JSDOM(html);
   let $containor = dom.window.document.querySelector('#phrsListTab');
@@ -29,14 +32,13 @@ function parser(html) {
   };
 }
 
-function main(keyword) {
-  if (!keyword) {
+function main(word) {
+  if (!word) {
     return Promise.reject('请输入要查询的文字');
   }
 
-  // if (/^[\u4e00-\u9fa5]+$/.test(keyword)) {
-  //   keyword = encodeURIComponent(keyword);
-  // }
+  // 执行编码
+  let keyword = encodeURIComponent(word);
 
   // 模拟浏览器的头信息
   /* eslint-disable max-len */
@@ -47,20 +49,17 @@ function main(keyword) {
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',
     'Host': 'www.youdao.com',
+    'Referer': 'http://www.youdao.com/?cookie=new',
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36'
   });
   /* eslint-enable max-len */
 
-  const url = `http://www.youdao.com/w/eng/${keyword}/#keyfrom=dict2.top`;
+  const url = `http://www.youdao.com/w/eng/${keyword}`;
 
   return fetch(url, { headers })
-    .then(res => {
-      return res.text()
-    })
-    .then(body => {
-      return parser(body)
-    })
+    .then(res => res.text())
+    .then(body => parser(body))
 }
 
 module.exports = main;
