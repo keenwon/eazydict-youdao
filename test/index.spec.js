@@ -14,33 +14,44 @@ let resetData;
 /**
  * 区分"线上测试"和"集成测试"
  */
-if (process.env.NODE_ENV === 'online') {
+if (process.env.NODE_ENV === 'testing') {
+  youdao = proxyquire('../index.js', stubs);
+  resetData = fetch.resetData;
+} else {
   youdao = require('../index.js');
   resetData = () => {
     // do nothing
   };
-} else {
-  youdao = proxyquire('../index.js', stubs);
-  resetData = fetch.resetData;
 }
 
 const mocha = require('mocha');
 const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
 chai.should();
-chai.use(chaiAsPromised);
 
 describe('Test', function () {
 
   describe('# 入参测试', function () {
-    it('英文单词', function () {
+
+    it('英文单词', function (done) {
       fetch.resetData('en_word');
-      return youdao('world').should.be.fulfilled;
+
+      youdao('world')
+        .then(result => {
+          result.should.property('phonetics').with.lengthOf(2)
+          result.should.property('trans').with.lengthOf(1)
+          done();
+        });
     });
 
-    it('英文短语', function () {
+    it('英文短语', function (done) {
       fetch.resetData('en_phrase');
-      return youdao('hello world').should.be.fulfilled;
+
+      youdao('hello world')
+        .then(result => {
+          result.should.property('phonetics').with.lengthOf(0)
+          result.should.property('trans').with.lengthOf(1)
+          done();
+        });
     });
   });
 

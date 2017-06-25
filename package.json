@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "mocha ./test/eslint.spec.js",
-    "test": "nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls",
-    "online": "NODE_ENV=online mocha"
+    "test": "NODE_ENV=testing nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,6 @@
   "homepage": "https://github.com/keenwon/eazydict-youdao#readme",
   "devDependencies": {
     "chai": "^4.0.2",
-    "chai-as-promised": "^7.0.0",
     "coveralls": "^2.13.1",
     "mocha": "^3.4.2",
     "mocha-eslint": "^3.0.1",

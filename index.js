@@ -13,6 +13,12 @@ function parser(html) {
   // 提取音标
   let phonetics = [];
   $containor.querySelectorAll('.pronounce').forEach(item => {
+    let content = item.textContent.trim();
+
+    if (!content) {
+      return;
+    }
+
     phonetics.push(
       item.textContent.split('\n')
         .map(i => i.trim())
