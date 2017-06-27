@@ -28,7 +28,7 @@ const mocha = require('mocha');
 const chai = require('chai');
 chai.should();
 
-describe('Test', function () {
+describe('主程序测试', function () {
 
   describe('# 入参测试', function () {
 
