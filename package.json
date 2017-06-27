@@ -30,7 +30,7 @@
     "proxyquire": "^1.8.0"
   },
   "dependencies": {
-    "jsdom": "^11.0.0",
+    "cheerio": "^1.0.0-rc.1",
     "node-fetch": "^1.7.1"
   }
 }

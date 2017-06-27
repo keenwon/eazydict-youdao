@@ -53,6 +53,17 @@ describe('Test', function () {
           done();
         });
     });
+
+    it('中文单词', function (done) {
+      fetch.resetData('cn_word');
+
+      youdao('世界')
+        .then(result => {
+          result.should.property('phonetics').with.lengthOf(0);
+          result.should.property('trans').lengthOf.at.least(1);
+          done();
+        });
+    });
   });
 
 });
