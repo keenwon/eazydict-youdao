@@ -26,7 +26,10 @@ if (process.env.NODE_ENV === 'testing') {
 
 const mocha = require('mocha');
 const chai = require('chai');
+const Joi = require('joi');
+const chaiJoi = require('chai-joi');
 chai.should();
+chai.use(chaiJoi);
 
 describe('主程序测试', function () {
 
@@ -35,10 +38,14 @@ describe('主程序测试', function () {
     it('英文单词', function (done) {
       fetch.resetData('en_word');
 
+      const schema = Joi.object({
+        phonetics: Joi.array().length(2).required(),
+        trans: Joi.array().min(1).required()
+      });
+
       youdao('world')
         .then(result => {
-          result.should.property('phonetics').with.lengthOf(2);
-          result.should.property('trans').lengthOf.at.least(1);
+          Joi.validate(result, schema).should.validate;
           done();
         });
     });
@@ -46,10 +53,14 @@ describe('主程序测试', function () {
     it('英文短语', function (done) {
       fetch.resetData('en_phrase');
 
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        trans: Joi.array().min(1).required()
+      });
+
       youdao('hello world')
         .then(result => {
-          result.should.property('phonetics').with.lengthOf(0);
-          result.should.property('trans').lengthOf.at.least(1);
+          Joi.validate(result, schema).should.validate;
           done();
         });
     });
@@ -57,10 +68,14 @@ describe('主程序测试', function () {
     it('中文单词', function (done) {
       fetch.resetData('cn_word');
 
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        trans: Joi.array().min(1).required()
+      });
+
       youdao('世界')
         .then(result => {
-          result.should.property('phonetics').with.lengthOf(0);
-          result.should.property('trans').lengthOf.at.least(1);
+          Joi.validate(result, schema).should.validate;
           done();
         });
     });

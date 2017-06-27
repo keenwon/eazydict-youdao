@@ -23,7 +23,9 @@
   "homepage": "https://github.com/keenwon/eazydict-youdao#readme",
   "devDependencies": {
     "chai": "^4.0.2",
+    "chai-joi": "^1.1.0",
     "coveralls": "^2.13.1",
+    "joi": "^10.6.0",
     "mocha": "^3.4.2",
     "mocha-eslint": "^3.0.1",
     "nyc": "^11.0.2",
