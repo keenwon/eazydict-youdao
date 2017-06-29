@@ -134,4 +134,22 @@ describe('主程序测试', function () {
     });
   });
 
+  describe('# 异常测试', function () {
+
+    it('查询乱码 & 错误页等', function () {
+      fetch.resetData('error');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('#WQE')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+  });
+
 });
