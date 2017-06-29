@@ -33,50 +33,47 @@ chai.use(chaiJoi);
 
 describe('主程序测试', function () {
 
-  describe('# 入参测试', function () {
+  describe('# 功能测试', function () {
 
-    it('英文单词', function (done) {
+    it('英文单词', function () {
       fetch.resetData('en_word');
 
       const schema = Joi.object({
         phonetics: Joi.array().length(2).required(),
-        trans: Joi.array().min(1).required()
+        translates: Joi.array().min(1).required()
       });
 
-      youdao('world')
+      return youdao('world')
         .then(result => {
           Joi.validate(result, schema).should.validate;
-          done();
         });
     });
 
-    it('英文短语', function (done) {
+    it('英文短语', function () {
       fetch.resetData('en_phrase');
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        trans: Joi.array().min(1).required()
+        translates: Joi.array().min(1).required()
       });
 
-      youdao('hello world')
+      return youdao('hello world')
         .then(result => {
           Joi.validate(result, schema).should.validate;
-          done();
         });
     });
 
-    it('中文单词', function (done) {
+    it('中文单词', function () {
       fetch.resetData('cn_word');
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        trans: Joi.array().min(1).required()
+        translates: Joi.array().min(1).required()
       });
 
-      youdao('世界')
+      return youdao('世界')
         .then(result => {
           Joi.validate(result, schema).should.validate;
-          done();
         });
     });
   });
