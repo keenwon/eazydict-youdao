@@ -28,8 +28,10 @@ const mocha = require('mocha');
 const chai = require('chai');
 const Joi = require('joi');
 const chaiJoi = require('chai-joi');
+const chaiAsPromised = require('chai-as-promised');
 chai.should();
 chai.use(chaiJoi);
+chai.use(chaiAsPromised);
 
 describe('主程序测试', function () {
 
@@ -162,6 +164,17 @@ describe('主程序测试', function () {
         .then(result => {
           Joi.validate(result, schema).should.validate;
         });
+    });
+
+    it('查询空关键字', function () {
+      fetch.resetData('notfound');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('').should.eventually.rejected;
     });
 
   });

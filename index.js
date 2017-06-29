@@ -25,7 +25,7 @@ const headers = new fetch.Headers({
  */
 function main(word) {
   if (!word) {
-    return Promise.reject('请输入要查询的文字');
+    return Promise.reject(new Error('请输入要查询的文字'));
   }
 
   // 编码
