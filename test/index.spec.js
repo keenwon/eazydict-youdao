@@ -76,6 +76,62 @@ describe('主程序测试', function () {
           Joi.validate(result, schema).should.validate;
         });
     });
+
+    it('中文短语', function () {
+      fetch.resetData('cn_phrase');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('你好世界')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+    it('中英单词', function () {
+      fetch.resetData('en_cn_word');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('hello世界')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+    it('中文短语', function () {
+      fetch.resetData('en_cn_phrase');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('hello 世界')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+    it('数字', function () {
+      fetch.resetData('number');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(1).required()
+      });
+
+      return youdao('123')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
   });
 
 });
