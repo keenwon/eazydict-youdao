@@ -150,6 +150,20 @@ describe('主程序测试', function () {
         });
     });
 
+    it('被跳转到首页', function () {
+      fetch.resetData('notfound');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required()
+      });
+
+      return youdao('////')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
   });
 
 });
