@@ -20,6 +20,17 @@
   "bugs": {
     "url": "https://github.com/keenwon/eazydict-youdao/issues"
   },
+  "keywords": [
+    "eazydict",
+    "dictionary",
+    "translate",
+    "youdao",
+    "bing",
+    "google",
+    "terminal",
+    "console",
+    "linux"
+  ],
   "homepage": "https://github.com/keenwon/eazydict-youdao#readme",
   "devDependencies": {
     "chai": "^4.0.2",
