@@ -5,7 +5,7 @@ const parser = require('./lib/parser');
 const {
   EDOutput,
   CODES
-} = require('./lib/EazydictStandardOutput');
+} = require('eazydict-standard-output');
 
 /**
  * 模拟浏览器的头信息
