@@ -2,6 +2,10 @@
 
 const fetch = require('node-fetch');
 const parser = require('./lib/parser');
+const {
+  EDOutput,
+  CODES
+} = require('./lib/EazydictStandardOutput');
 
 /**
  * 模拟浏览器的头信息
@@ -36,6 +40,13 @@ function main(word) {
   return fetch(url, { headers })
     .then(res => res.text())
     .then(body => parser(body))
+    .catch(error => {
+      if (error.name === 'FetchError') {
+        return new EDOutput(CODES.NETWORK_ERROR);
+      }
+
+      return new EDOutput(CODES.OTHER);
+    })
 }
 
 module.exports = main;

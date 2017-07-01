@@ -42,7 +42,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(2).required(),
-        translates: Joi.array().min(1).required()
+        translates: Joi.array().empty().required(),
+        error: Joi.any().optional()
       });
 
       return youdao('world')
@@ -56,7 +57,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().min(1).required()
+        translates: Joi.array().min(1).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('hello world')
@@ -70,7 +72,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().min(1).required()
+        translates: Joi.array().min(1).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('世界')
@@ -84,7 +87,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('你好世界')
@@ -98,7 +102,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('hello世界')
@@ -112,7 +117,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('hello 世界')
@@ -126,7 +132,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(1).required()
+        translates: Joi.array().length(1).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('123')
@@ -143,7 +150,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('#WQE')
@@ -157,7 +165,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional()
       });
 
       return youdao('////')
@@ -167,14 +176,30 @@ describe('主程序测试', function () {
     });
 
     it('查询空关键字', function () {
-      fetch.resetData('notfound');
+      fetch.resetData('notfound')
+
+      return youdao('')
+        .should
+        .eventually
+        .rejected;
+    });
+
+    it('网络异常', function () {
+      fetch.resetData('network_error');
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        phonetics: Joi.array().empty().required(),
+        translates: Joi.array().empty().required(),
+        error: Joi.object({
+          code: Joi.number().integer(1).required(),
+          message: Joi.string().allow('').optional()
+        })
       });
 
-      return youdao('').should.eventually.rejected;
+      return youdao('network_error')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
     });
 
   });
