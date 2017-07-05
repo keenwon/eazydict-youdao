@@ -47,6 +47,13 @@ function main(word) {
 
       return new EDOutput(CODES.OTHER);
     })
+    .then(output => {
+      // 添加插件信息
+      output.pluginName = 'youdao';
+      output.url = url;
+
+      return output;
+    });
 }
 
 module.exports = main;

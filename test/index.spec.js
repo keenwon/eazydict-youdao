@@ -42,9 +42,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(2).required(),
-        translates: Joi.array().empty().required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().empty().required()
+      }).unknown().required();
 
       return youdao('world')
         .then(result => {
@@ -57,9 +56,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().min(1).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().min(1).required()
+      }).unknown().required();
 
       return youdao('hello world')
         .then(result => {
@@ -72,9 +70,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().min(1).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().min(1).required()
+      }).unknown().required();
 
       return youdao('世界')
         .then(result => {
@@ -87,9 +84,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().length(0).required()
+      }).unknown().required();
 
       return youdao('你好世界')
         .then(result => {
@@ -102,9 +98,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().length(0).required()
+      }).unknown().required();
 
       return youdao('hello世界')
         .then(result => {
@@ -117,9 +112,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().length(0).required()
+      }).unknown().required();
 
       return youdao('hello 世界')
         .then(result => {
@@ -132,11 +126,25 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(1).required(),
-        error: Joi.any().optional()
-      });
+        translates: Joi.array().length(1).required()
+      }).unknown().required();
 
       return youdao('123')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+    it('插件名和 URL', function () {
+      fetch.resetData('en_word');
+
+      const url = `http://www.youdao.com/w/eng/${encodeURIComponent('test')}`;
+      const schema = Joi.object({
+        pluginName: Joi.string().equal('youdao').required(),
+        url: Joi.string().equal(url).required()
+      }).unknown().required();
+
+      return youdao('test')
         .then(result => {
           Joi.validate(result, schema).should.validate;
         });
@@ -152,7 +160,7 @@ describe('主程序测试', function () {
         phonetics: Joi.array().length(0).required(),
         translates: Joi.array().length(0).required(),
         error: Joi.any().optional()
-      });
+      }).unknown().required();
 
       return youdao('#WQE')
         .then(result => {
@@ -167,7 +175,7 @@ describe('主程序测试', function () {
         phonetics: Joi.array().length(0).required(),
         translates: Joi.array().length(0).required(),
         error: Joi.any().optional()
-      });
+      }).unknown().required();
 
       return youdao('////')
         .then(result => {
@@ -194,7 +202,7 @@ describe('主程序测试', function () {
           code: Joi.number().integer(1).required(),
           message: Joi.string().allow('').optional()
         })
-      });
+      }).unknown().required();
 
       return youdao('network_error')
         .then(result => {
