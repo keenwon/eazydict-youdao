@@ -107,7 +107,7 @@ describe('主程序测试', function () {
         });
     });
 
-    it('中文短语', function () {
+    it('中英短语', function () {
       fetch.resetData('en_cn_phrase');
 
       const schema = Joi.object({
