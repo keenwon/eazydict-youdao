@@ -49,7 +49,7 @@ function main(word) {
     })
     .then(output => {
       // 添加插件信息
-      output.pluginName = 'youdao';
+      output.pluginName = 'Youdao';
       output.url = url;
 
       return output;
