@@ -46,6 +46,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "eazydict-standard-output": "^1.1.0",
-    "node-fetch": "^1.7.1"
+    "node-fetch": "^1.7.1",
+    "p-retry": "^1.0.0"
   }
 }

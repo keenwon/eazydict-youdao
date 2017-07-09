@@ -4,6 +4,8 @@
 
 const proxyquire = require('proxyquire').noPreserveCache();
 const fetch = require('./lib/fetch');
+fetch['@global'] = true;
+
 const stubs = {
   'node-fetch': fetch
 };
@@ -193,6 +195,8 @@ describe('主程序测试', function () {
     });
 
     it('网络异常', function () {
+      this.timeout(8000);
+
       fetch.resetData('network_error');
 
       const schema = Joi.object({
