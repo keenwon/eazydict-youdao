@@ -140,7 +140,7 @@ describe('主程序测试', function () {
 
       const url = `http://www.youdao.com/w/eng/${encodeURIComponent('test')}`;
       const schema = Joi.object({
-        pluginName: Joi.string().equal('youdao').required(),
+        pluginName: Joi.string().equal('Youdao').required(),
         url: Joi.string().equal(url).required()
       }).unknown().required();
 
