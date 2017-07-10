@@ -38,4 +38,14 @@ function main(word) {
     });
 }
 
-module.exports = main;
+if (require.main === module) {
+  // istanbul ignore next
+  let word = process.argv.slice(2).join(' ');
+
+  main(word)
+    .then(result => {
+      console.log(result); // eslint-disable-line no-console
+    });
+} else {
+  module.exports = main;
+}
