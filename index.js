@@ -10,7 +10,7 @@ const {
 /**
  * 入口
  */
-function main(word) {
+function main(word, configs) {
   if (!word) {
     return Promise.reject(new Error('请输入要查询的文字'));
   }
@@ -20,7 +20,7 @@ function main(word) {
 
   const url = `http://www.youdao.com/w/eng/${keyword}`;
 
-  return fetch(url)
+  return fetch(url, configs)
     .then(body => parser(body))
     .catch(error => {
       if (error.name === 'FetchError') {
