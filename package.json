@@ -46,7 +46,9 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "eazydict-standard-output": "^1.1.0",
+    "https-proxy-agent": "^2.0.0",
     "node-fetch": "^1.7.1",
-    "p-retry": "^1.0.0"
+    "p-retry": "^1.0.0",
+    "socks-proxy-agent": "^3.0.0"
   }
 }
