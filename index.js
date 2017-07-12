@@ -1,5 +1,6 @@
 'use strict';
 
+const debug = require('./lib/debug');
 const fetch = require('./lib/fetch');
 const parser = require('./lib/parser');
 const {
@@ -11,6 +12,11 @@ const {
  * 入口
  */
 function main(word, configs) {
+  debug(`run with arguments %O`, {
+    word,
+    configs
+  });
+
   if (!word) {
     return Promise.reject(new Error('请输入要查询的文字'));
   }
@@ -19,6 +25,7 @@ function main(word, configs) {
   let keyword = encodeURIComponent(word);
 
   const url = `http://www.youdao.com/w/eng/${keyword}`;
+  debug(`fetch url ${url}`)
 
   return fetch(url, configs)
     .then(body => parser(body))
@@ -33,6 +40,8 @@ function main(word, configs) {
       // 添加插件信息
       output.pluginName = 'Youdao';
       output.url = url;
+
+      debug(`output: %O`, output);
 
       return output;
     });
