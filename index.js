@@ -25,7 +25,7 @@ function main(word, configs) {
   let keyword = encodeURIComponent(word);
 
   const url = `http://www.youdao.com/w/eng/${keyword}`;
-  debug('fetch url ${url}');
+  debug(`fetch url ${url}`);
 
   return fetch(url, configs)
     .then(body => parser(body))
