@@ -12,7 +12,7 @@ const {
  * 入口
  */
 function main(word, configs) {
-  debug(`run with arguments %O`, {
+  debug('run with arguments %O', {
     word,
     configs
   });
@@ -25,7 +25,7 @@ function main(word, configs) {
   let keyword = encodeURIComponent(word);
 
   const url = `http://www.youdao.com/w/eng/${keyword}`;
-  debug(`fetch url ${url}`)
+  debug('fetch url ${url}');
 
   return fetch(url, configs)
     .then(body => parser(body))
@@ -41,7 +41,7 @@ function main(word, configs) {
       output.pluginName = 'Youdao';
       output.url = url;
 
-      debug(`output: %O`, output);
+      debug('output: %O', output);
 
       return output;
     });
