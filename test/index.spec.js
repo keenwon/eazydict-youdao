@@ -44,7 +44,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(2).required(),
-        translates: Joi.array().length(8).required()
+        translates: Joi.array().length(8).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('world')
@@ -58,7 +59,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(5).required()
+        translates: Joi.array().length(5).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('hello world')
@@ -72,7 +74,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(7).required()
+        translates: Joi.array().length(7).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('世界')
@@ -86,7 +89,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(1).required()
+        translates: Joi.array().length(1).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('你好世界')
@@ -100,7 +104,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(0).required(),
+        examples: Joi.array().length(0).required()
       }).unknown().required();
 
       return youdao('hello世界')
@@ -114,7 +119,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(5).required()
+        translates: Joi.array().length(5).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('hello 世界')
@@ -128,7 +134,8 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(6).required()
+        translates: Joi.array().length(6).required(),
+        examples: Joi.array().length(3).required()
       }).unknown().required();
 
       return youdao('797')
@@ -204,6 +211,7 @@ describe('主程序测试', function () {
         translates: Joi.array().empty().required(),
         error: Joi.object({
           code: Joi.number().integer(1).required(),
+          type: Joi.string().required(),
           message: Joi.string().allow('').optional()
         })
       }).unknown().required();
