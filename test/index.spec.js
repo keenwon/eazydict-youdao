@@ -114,7 +114,7 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required()
+        translates: Joi.array().length(5).required()
       }).unknown().required();
 
       return youdao('hello 世界')
@@ -128,10 +128,10 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(1).required()
+        translates: Joi.array().length(6).required()
       }).unknown().required();
 
-      return youdao('123')
+      return youdao('797')
         .then(result => {
           Joi.validate(result, schema).should.validate;
         });
