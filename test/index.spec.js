@@ -44,7 +44,7 @@ describe('主程序测试', function () {
 
       const schema = Joi.object({
         phonetics: Joi.array().length(2).required(),
-        translates: Joi.array().length(9).required()
+        translates: Joi.array().length(8).required()
       }).unknown().required();
 
       return youdao('world')
