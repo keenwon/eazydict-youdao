@@ -11,20 +11,20 @@ const {
 /**
  * 入口
  */
-function main(word, configs) {
+function main(words, configs) {
   debug('run with arguments %O', {
-    word,
+    words,
     configs
   });
 
-  if (!word) {
+  if (!words) {
     return Promise.reject(new Error('请输入要查询的文字'));
   }
 
   // 编码
-  let keyword = encodeURIComponent(word);
+  let keywords = encodeURIComponent(words);
 
-  const url = `http://www.youdao.com/w/eng/${keyword}`;
+  const url = `http://www.youdao.com/w/eng/${keywords}`;
   debug(`fetch url ${url}`);
 
   return fetch(url, configs)
@@ -39,6 +39,7 @@ function main(word, configs) {
     .then(output => {
       // 添加插件信息
       output.pluginName = 'Youdao';
+      output.words = words;
       output.url = url;
 
       debug('output: %O', output);
