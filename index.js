@@ -3,6 +3,8 @@
 const debug = require('./lib/debug');
 const fetch = require('./lib/fetch');
 const parser = require('./lib/parser');
+const defaultsDeep = require('lodash.defaultsdeep');
+const defaultConfigs = require('./defaultConfig');
 const {
   EDOutput,
   CODES
@@ -11,11 +13,15 @@ const {
 /**
  * 入口
  */
-function main(words, configs) {
+function main(words, userConfigs) {
   debug('run with arguments %O', {
     words,
-    configs
+    userConfigs
   });
+
+  let configs = defaultsDeep(defaultConfigs, userConfigs);
+
+  debug('use configs %O', configs);
 
   if (!words) {
     return Promise.reject(new Error('请输入要查询的文字'));
@@ -28,7 +34,7 @@ function main(words, configs) {
   debug(`fetch url ${url}`);
 
   return fetch(url, configs)
-    .then(body => parser(body))
+    .then(body => parser(body, configs))
     .catch(error => {
       if (error.name === 'FetchError') {
         return new EDOutput(CODES.NETWORK_ERROR);
