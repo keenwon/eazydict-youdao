@@ -24,7 +24,7 @@ module.exports = {
        *    不限: -1
        *    其他为设置具体条数
        */
-      examples: 2,
+      examples: -1,
 
       // 是否显示音标
       phonetics: -1,
