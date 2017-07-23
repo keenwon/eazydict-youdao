@@ -34,7 +34,7 @@ function main(words, userConfigs) {
   debug(`fetch url ${url}`);
 
   return fetch(url, configs)
-    .then(body => parser(body, configs))
+    .then(body => parser(body))
     .catch(error => {
       if (error.name === 'FetchError') {
         return new EDOutput(CODES.NETWORK_ERROR);
