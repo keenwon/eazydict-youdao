@@ -5,6 +5,7 @@ const fetch = require('./lib/fetch');
 const parser = require('./lib/parser');
 const assign = require('lodash.assign');
 const defaultConfigs = require('./defaultConfig');
+const pkg = require('./package.json');
 const {
   EDOutput,
   CODES
@@ -45,6 +46,7 @@ function main(words, userConfigs) {
     .then(output => {
       // 添加插件信息
       output.pluginName = 'Youdao';
+      output.packageName = pkg.name;
       output.words = words;
       output.url = url;
 
