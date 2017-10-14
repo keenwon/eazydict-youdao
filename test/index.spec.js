@@ -105,7 +105,7 @@ describe('主程序测试', function () {
       const schema = Joi.object({
         phonetics: Joi.array().length(0).required(),
         translates: Joi.array().length(0).required(),
-        examples: Joi.array().length(0).required()
+        examples: Joi.array().length(2).required()
       }).unknown().required();
 
       return youdao('hello世界')
@@ -139,6 +139,22 @@ describe('主程序测试', function () {
       }).unknown().required();
 
       return youdao('797')
+        .then(result => {
+          Joi.validate(result, schema).should.validate;
+        });
+    });
+
+    it('搜索建议', function () {
+      fetch.resetData('suggest');
+
+      const schema = Joi.object({
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required(),
+        examples: Joi.array().length(0).required(),
+        suggests: Joi.array().length(2).required()
+      }).unknown().required();
+
+      return youdao('ffdad')
         .then(result => {
           Joi.validate(result, schema).should.validate;
         });
