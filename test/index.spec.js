@@ -29,10 +29,8 @@ if (process.env.NODE_ENV === 'testing') {
 const mocha = require('mocha');
 const chai = require('chai');
 const Joi = require('joi');
-const chaiJoi = require('chai-joi');
 const chaiAsPromised = require('chai-as-promised');
 chai.should();
-chai.use(chaiJoi);
 chai.use(chaiAsPromised);
 
 describe('主程序测试', function () {
@@ -50,7 +48,7 @@ describe('主程序测试', function () {
 
       return youdao('world')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -65,7 +63,7 @@ describe('主程序测试', function () {
 
       return youdao('hello world')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -80,7 +78,7 @@ describe('主程序测试', function () {
 
       return youdao('世界')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -95,7 +93,7 @@ describe('主程序测试', function () {
 
       return youdao('你好世界')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -110,7 +108,7 @@ describe('主程序测试', function () {
 
       return youdao('hello世界')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -125,7 +123,7 @@ describe('主程序测试', function () {
 
       return youdao('你好 world')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -140,7 +138,7 @@ describe('主程序测试', function () {
 
       return youdao('797')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -156,7 +154,7 @@ describe('主程序测试', function () {
 
       return youdao('ffdad')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -171,7 +169,7 @@ describe('主程序测试', function () {
 
       return youdao('test')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
   });
@@ -189,7 +187,7 @@ describe('主程序测试', function () {
 
       return youdao('#WQE')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -204,7 +202,7 @@ describe('主程序测试', function () {
 
       return youdao('////')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 
@@ -234,7 +232,7 @@ describe('主程序测试', function () {
 
       return youdao('network_error')
         .then(result => {
-          Joi.validate(result, schema).should.validate;
+          Joi.validate(result, schema).should.include({ error: null });
         });
     });
 

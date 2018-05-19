@@ -33,24 +33,23 @@
   ],
   "homepage": "https://github.com/keenwon/eazydict-youdao#readme",
   "devDependencies": {
-    "chai": "^4.0.2",
+    "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "chai-joi": "^1.1.0",
-    "coveralls": "^2.13.1",
-    "joi": "^10.6.0",
-    "mocha": "^3.4.2",
-    "mocha-eslint": "^3.0.1",
-    "nyc": "^11.0.2",
-    "proxyquire": "^1.8.0"
+    "coveralls": "^3.0.1",
+    "joi": "^13.3.0",
+    "mocha": "^5.2.0",
+    "mocha-eslint": "^4.1.0",
+    "nyc": "^11.8.0",
+    "proxyquire": "^2.0.1"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "debug": "^2.6.8",
-    "eazydict-standard-output": "^1.7.1",
-    "https-proxy-agent": "^2.0.0",
+    "debug": "^3.1.0",
+    "eazydict-standard-output": "^1.7.2",
+    "https-proxy-agent": "^2.2.1",
     "lodash.assign": "^4.2.0",
-    "node-fetch": "^1.7.1",
-    "p-retry": "^1.0.0",
-    "socks-proxy-agent": "^3.0.0"
+    "node-fetch": "^2.1.2",
+    "p-retry": "^2.0.0",
+    "socks-proxy-agent": "^4.0.1"
   }
 }

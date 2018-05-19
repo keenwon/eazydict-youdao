@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const FetchError = require('node-fetch/lib/fetch-error');
+const { FetchError } = require('node-fetch');
 
 const NETWORK_ERROR = 'network_error';
 
