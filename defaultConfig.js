@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * 插件默认配置
@@ -16,4 +16,4 @@ module.exports = {
    *    开启: 'socks://127.0.0.1:1080'
    */
   proxy: false
-};
+}

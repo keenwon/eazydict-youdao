@@ -4,9 +4,11 @@
   "description": "EazyDict 有道词典插件",
   "main": "index.js",
   "scripts": {
-    "eslint": "mocha ./test/eslint.spec.js",
-    "test": "NODE_ENV=testing nyc --reporter=html --reporter=text mocha && nyc report --reporter=text-lcov | coveralls",
-    "start": "NODE_ENV=online nyc --reporter=html --reporter=text mocha --timeout 5000 && nyc report --reporter=text-lcov | coveralls"
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "elint lint \"lib/**/*.js\" \"test/**/*.js\" defaultConfig.js index.js --fix",
+    "test:unit": "NODE_ENV=testing nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
+    "start": "NODE_ENV=online nyc --reporter=html --reporter=text mocha --timeout 5000 \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
+    "beforecommit": "elint lint commit"
   },
   "repository": {
     "type": "git",
@@ -36,9 +38,10 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.3",
+    "elint": "^1.11.0",
+    "elint-preset-kw": "^1.8.1",
     "joi": "^14.3.1",
     "mocha": "^6.0.2",
-    "mocha-eslint": "^5.0.0",
     "nyc": "^13.3.0",
     "proxyquire": "^2.1.0"
   },
