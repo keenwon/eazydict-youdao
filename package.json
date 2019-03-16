@@ -1,6 +1,6 @@
 {
   "name": "eazydict-youdao",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "EazyDict 有道词典插件",
   "main": "index.js",
   "scripts": {
