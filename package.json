@@ -22,6 +22,11 @@
   "bugs": {
     "url": "https://github.com/keenwon/eazydict-youdao/issues"
   },
+  "files": [
+    "lib",
+    "defaultConfig.js",
+    "index.js"
+  ],
   "keywords": [
     "eazydict",
     "dictionary",
