@@ -11,7 +11,7 @@ const { FetchError } = require('node-fetch')
 
 const NETWORK_ERROR = 'network_error'
 
-const defaultDataPath = path.resolve(__dirname, '../mock/en_world.html')
+const defaultDataPath = path.resolve(__dirname, '../mock/en_world')
 let currentDataPath = defaultDataPath
 
 // mock fetch 方法
@@ -38,7 +38,7 @@ function fetch () {
 // 重置 mock 数据
 fetch.resetData = function (type) {
   try {
-    currentDataPath = path.resolve(__dirname, `../mock/${type}.html`)
+    currentDataPath = path.resolve(__dirname, `../mock/${type}`)
   } catch (error) {
     currentDataPath = defaultDataPath
   }

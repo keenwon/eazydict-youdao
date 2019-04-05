@@ -6,10 +6,7 @@ const parser = require('./lib/parser')
 const assign = require('lodash.assign')
 const defaultConfigs = require('./defaultConfig')
 const pkg = require('./package.json')
-const {
-  EDOutput,
-  CODES
-} = require('eazydict-standard-output')
+const { EDOutput, CODES } = require('eazydict-standard-output')
 
 // 入口
 function main (words, userConfigs) {
@@ -58,10 +55,9 @@ if (require.main === module) {
   // istanbul ignore next
   let word = process.argv.slice(2).join(' ')
 
-  main(word)
-    .then(result => {
-      console.log(result) // eslint-disable-line no-console
-    })
+  main(word).then(result => {
+    console.log(result) // eslint-disable-line no-console
+  })
 } else {
   module.exports = main
 }

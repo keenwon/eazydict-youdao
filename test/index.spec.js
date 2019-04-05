@@ -36,121 +36,179 @@ describe('主程序测试', function () {
       resetData('en_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(2).required(),
-        translates: Joi.array().length(8).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(2)
+          .required(),
+        translates: Joi.array()
+          .length(8)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('world')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('world').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('英文短语', function () {
       resetData('en_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(5).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(5)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('hello world')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('hello world').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('中文单词', function () {
       resetData('cn_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(7).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(7)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('世界')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('世界').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('中文短语', function () {
       resetData('cn_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(1).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(1)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('你好世界')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('你好世界').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('中英单词', function () {
       resetData('en_cn_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
-        examples: Joi.array().length(2).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(0)
+          .required(),
+        examples: Joi.array()
+          .length(2)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('hello世界')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('hello世界').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('中英短语', function () {
       resetData('en_cn_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(10).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(10)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('你好 world')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('你好 world').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('数字', function () {
       resetData('number')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(11).required(),
-        examples: Joi.array().length(3).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(11)
+          .required(),
+        examples: Joi.array()
+          .length(3)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('797')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('797').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('搜索建议', function () {
       resetData('suggest')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
-        examples: Joi.array().length(0).required(),
-        suggests: Joi.array().length(2).required()
-      }).unknown().required()
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(0)
+          .required(),
+        examples: Joi.array()
+          .length(0)
+          .required(),
+        suggests: Joi.array()
+          .length(2)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('ffdad')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('ffdad').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('插件名和 URL', function () {
@@ -158,14 +216,19 @@ describe('主程序测试', function () {
 
       const url = `http://www.youdao.com/w/eng/${encodeURIComponent('test')}`
       const schema = Joi.object({
-        pluginName: Joi.string().equal('Youdao').required(),
-        url: Joi.string().equal(url).required()
-      }).unknown().required()
+        pluginName: Joi.string()
+          .equal('Youdao')
+          .required(),
+        url: Joi.string()
+          .equal(url)
+          .required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('test')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('test').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
   })
 
@@ -174,39 +237,46 @@ describe('主程序测试', function () {
       resetData('error')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(0)
+          .required(),
         error: Joi.any().optional()
-      }).unknown().required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('#WQE')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('#WQE').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('被跳转到首页', function () {
       resetData('notfound')
 
       const schema = Joi.object({
-        phonetics: Joi.array().length(0).required(),
-        translates: Joi.array().length(0).required(),
+        phonetics: Joi.array()
+          .length(0)
+          .required(),
+        translates: Joi.array()
+          .length(0)
+          .required(),
         error: Joi.any().optional()
-      }).unknown().required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('////')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('////').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
 
     it('查询空关键字', function () {
       resetData('notfound')
 
-      return youdao('')
-        .should
-        .eventually
-        .rejected
+      return youdao('').should.eventually.rejected
     })
 
     it('网络异常', function () {
@@ -215,19 +285,28 @@ describe('主程序测试', function () {
       resetData('network_error')
 
       const schema = Joi.object({
-        phonetics: Joi.array().empty().required(),
-        translates: Joi.array().empty().required(),
+        phonetics: Joi.array()
+          .empty()
+          .required(),
+        translates: Joi.array()
+          .empty()
+          .required(),
         error: Joi.object({
-          code: Joi.number().integer(1).required(),
+          code: Joi.number()
+            .integer(1)
+            .required(),
           type: Joi.string().required(),
-          message: Joi.string().allow('').optional()
+          message: Joi.string()
+            .allow('')
+            .optional()
         })
-      }).unknown().required()
+      })
+        .unknown()
+        .required()
 
-      return youdao('network_error')
-        .then(result => {
-          Joi.validate(result, schema).should.include({ error: null })
-        })
+      return youdao('network_error').then(result => {
+        Joi.validate(result, schema).should.include({ error: null })
+      })
     })
   })
 })
