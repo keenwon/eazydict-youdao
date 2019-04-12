@@ -51,7 +51,7 @@
     "proxyquire": "^2.1.0"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "^1.0.0-rc.3",
     "debug": "^4.1.1",
     "eazydict-standard-output": "^1.7.2",
     "https-proxy-agent": "^2.2.1",
