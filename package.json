@@ -48,7 +48,7 @@
     "joi": "^14.3.1",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
-    "proxyquire": "^2.1.0"
+    "proxyquire": "^2.1.1"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
