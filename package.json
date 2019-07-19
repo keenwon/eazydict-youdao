@@ -42,7 +42,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "coveralls": "^3.0.4",
+    "coveralls": "^3.0.5",
     "elint": "^2.0.0-alpha.1",
     "elint-preset-kw": "^1.8.1",
     "joi": "^14.3.1",
