@@ -54,7 +54,7 @@
     "cheerio": "^1.0.0-rc.3",
     "debug": "^4.1.1",
     "eazydict-standard-output": "^1.7.2",
-    "https-proxy-agent": "^3.0.0",
+    "https-proxy-agent": "^3.0.1",
     "lodash.assign": "^4.2.0",
     "node-fetch": "^2.6.0",
     "p-retry": "^4.1.0",
