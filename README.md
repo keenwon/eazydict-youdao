@@ -19,8 +19,8 @@
 [license-url]: https://github.com/keenwon/eazydict-youdao/blob/master/LICENSE
 [github-actions-image]: https://github.com/keenwon/eazydict-youdao/workflows/unittest/badge.svg
 [github-actions-url]: https://github.com/keenwon/eazydict-youdao/actions
-[coveralls-image]: https://img.shields.io/codecov/c/github/keenwon/eazydict-bing
-[coveralls-url]: https://codecov.io/gh/keenwon/eazydict-bing
+[coveralls-image]: https://img.shields.io/codecov/c/github/keenwon/eazydict-youdao
+[coveralls-url]: https://codecov.io/gh/keenwon/eazydict-youdao
 [lgtm-alerts-image]: https://img.shields.io/lgtm/alerts/g/keenwon/eazydict-youdao.svg?logo=lgtm&logoWidth=18
 [lgtm-alerts-url]: https://lgtm.com/projects/g/keenwon/eazydict-youdao/alerts/
 [lgtm-grade-image]: https://img.shields.io/lgtm/grade/javascript/g/keenwon/eazydict-youdao.svg?logo=lgtm&logoWidth=18
