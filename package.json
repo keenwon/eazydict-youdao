@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "debug": "^4.3.1",
+    "debug": "^4.3.2",
     "eazydict-standard-output": "^1.7.2",
     "https-proxy-agent": "^5.0.0",
     "lodash.assign": "^4.2.0",
