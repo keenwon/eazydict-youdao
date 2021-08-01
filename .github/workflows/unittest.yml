@@ -11,24 +11,29 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: [8, 10, 12]
+        node_version: [8, 16]
         os: [ubuntu-latest, macOS-latest]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+
       - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node_version }}
+
       - name: npm install
         run: npm install
+
       - name: npm run test
         run: npm run test
+
       - name: npm run test:coverage
-        if: matrix.node_version == 12 && matrix.os == 'ubuntu-latest'
+        if: matrix.node_version == 16 && matrix.os == 'ubuntu-latest'
         run: npm run test:coverage
+
       - name: Upload coverage to Codecov
-        if: matrix.node_version == 12 && matrix.os == 'ubuntu-latest'
-        uses: codecov/codecov-action@v1.0.2
+        if: matrix.node_version == 16 && matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v2
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: ./coverage/lcov.info
