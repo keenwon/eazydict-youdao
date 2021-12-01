@@ -58,6 +58,6 @@
     "lodash.assign": "^4.2.0",
     "node-fetch": "^2.6.6",
     "p-retry": "^4.6.1",
-    "socks-proxy-agent": "^6.1.0"
+    "socks-proxy-agent": "^6.1.1"
   }
 }
