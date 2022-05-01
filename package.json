@@ -57,7 +57,7 @@
     "https-proxy-agent": "^5.0.1",
     "lodash.assign": "^4.2.0",
     "node-fetch": "^2.6.7",
-    "p-retry": "^4.6.1",
+    "p-retry": "^4.6.2",
     "socks-proxy-agent": "^6.1.1"
   }
 }
