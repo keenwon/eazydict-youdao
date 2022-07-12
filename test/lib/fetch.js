@@ -15,7 +15,7 @@ const defaultDataPath = path.resolve(__dirname, '../mock/en_world')
 let currentDataPath = defaultDataPath
 
 // mock fetch 方法
-function fetch () {
+function fetch() {
   return new Promise((resolve, reject) => {
     if (currentDataPath.includes(NETWORK_ERROR)) {
       return reject(new FetchError())
@@ -27,9 +27,9 @@ function fetch () {
       }
 
       resolve({
-        text () {
+        text() {
           return data.toString()
-        }
+        },
       })
     })
   })

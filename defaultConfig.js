@@ -15,5 +15,5 @@ module.exports = {
    *    关闭: false
    *    开启: 'socks://127.0.0.1:1080'
    */
-  proxy: false
+  proxy: false,
 }

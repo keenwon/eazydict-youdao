@@ -7,7 +7,7 @@ const fetch = require('./lib/fetch')
 fetch['@global'] = true
 
 const stubs = {
-  'node-fetch': fetch
+  'node-fetch': fetch,
 }
 
 let youdao
@@ -36,20 +36,14 @@ describe('主程序测试', function () {
       resetData('en_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(2)
-          .required(),
-        translates: Joi.array()
-          .length(8)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(2).required(),
+        translates: Joi.array().length(8).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('world').then(result => {
+      return youdao('world').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -58,20 +52,14 @@ describe('主程序测试', function () {
       resetData('en_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(5)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(5).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('hello world').then(result => {
+      return youdao('hello world').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -80,20 +68,14 @@ describe('主程序测试', function () {
       resetData('cn_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(7)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(7).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('世界').then(result => {
+      return youdao('世界').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -102,20 +84,14 @@ describe('主程序测试', function () {
       resetData('cn_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(1)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(1).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('你好世界').then(result => {
+      return youdao('你好世界').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -124,20 +100,14 @@ describe('主程序测试', function () {
       resetData('en_cn_word')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(0)
-          .required(),
-        examples: Joi.array()
-          .length(2)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required(),
+        examples: Joi.array().length(2).required(),
       })
         .unknown()
         .required()
 
-      return youdao('hello世界').then(result => {
+      return youdao('hello世界').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -146,20 +116,14 @@ describe('主程序测试', function () {
       resetData('en_cn_phrase')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(10)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(10).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('你好 world').then(result => {
+      return youdao('你好 world').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -168,20 +132,14 @@ describe('主程序测试', function () {
       resetData('number')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(11)
-          .required(),
-        examples: Joi.array()
-          .length(3)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(11).required(),
+        examples: Joi.array().length(3).required(),
       })
         .unknown()
         .required()
 
-      return youdao('797').then(result => {
+      return youdao('797').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -190,23 +148,15 @@ describe('主程序测试', function () {
       resetData('suggest')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(0)
-          .required(),
-        examples: Joi.array()
-          .length(0)
-          .required(),
-        suggests: Joi.array()
-          .length(2)
-          .required()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required(),
+        examples: Joi.array().length(0).required(),
+        suggests: Joi.array().length(2).required(),
       })
         .unknown()
         .required()
 
-      return youdao('ffdad').then(result => {
+      return youdao('ffdad').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -216,17 +166,13 @@ describe('主程序测试', function () {
 
       const url = `http://www.youdao.com/w/eng/${encodeURIComponent('test')}`
       const schema = Joi.object({
-        pluginName: Joi.string()
-          .equal('Youdao')
-          .required(),
-        url: Joi.string()
-          .equal(url)
-          .required()
+        pluginName: Joi.string().equal('Youdao').required(),
+        url: Joi.string().equal(url).required(),
       })
         .unknown()
         .required()
 
-      return youdao('test').then(result => {
+      return youdao('test').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -237,18 +183,14 @@ describe('主程序测试', function () {
       resetData('error')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(0)
-          .required(),
-        error: Joi.any().optional()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional(),
       })
         .unknown()
         .required()
 
-      return youdao('#WQE').then(result => {
+      return youdao('#WQE').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -257,18 +199,14 @@ describe('主程序测试', function () {
       resetData('notfound')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .length(0)
-          .required(),
-        translates: Joi.array()
-          .length(0)
-          .required(),
-        error: Joi.any().optional()
+        phonetics: Joi.array().length(0).required(),
+        translates: Joi.array().length(0).required(),
+        error: Joi.any().optional(),
       })
         .unknown()
         .required()
 
-      return youdao('////').then(result => {
+      return youdao('////').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
@@ -285,26 +223,18 @@ describe('主程序测试', function () {
       resetData('network_error')
 
       const schema = Joi.object({
-        phonetics: Joi.array()
-          .empty()
-          .required(),
-        translates: Joi.array()
-          .empty()
-          .required(),
+        phonetics: Joi.array().empty().required(),
+        translates: Joi.array().empty().required(),
         error: Joi.object({
-          code: Joi.number()
-            .integer(1)
-            .required(),
+          code: Joi.number().integer(1).required(),
           type: Joi.string().required(),
-          message: Joi.string()
-            .allow('')
-            .optional()
-        })
+          message: Joi.string().allow('').optional(),
+        }),
       })
         .unknown()
         .required()
 
-      return youdao('network_error').then(result => {
+      return youdao('network_error').then((result) => {
         schema.validate(result).should.not.have.property('error')
       })
     })
