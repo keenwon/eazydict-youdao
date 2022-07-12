@@ -62,7 +62,7 @@ describe('Utils 测试', function () {
     })
 
     // 各种类型的异常测试
-    ;['', [], {}, false, true, 0, 1].forEach(item => {
+    ;['', [], {}, false, true, 0, 1].forEach((item) => {
       it(`异常测试，输入值：${JSON.stringify(item)}`, function () {
         utils.removeTagsAndSpaces(item).should.be.equal(item)
       })
